@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    link(rel='stylesheet', href='../stylesheets/styles.css')
+    title TODO List
+
+  body
+    h1 Edit
+    
+    h2= `Edit the task : ${task.title}`
+    form(action=`/edit/${task.id}`, method='POST')
+      label(for='title') Task : 
+      input(name='title', value=`${task.title}`, id='title') 
+      label(for='detail') Detail : 
+      input(name='detail', value=`${task.detail}`, id='detail')
+      label(for='completed') Completed ? 
+      if task.completed 
+        input(type='checkbox', name='completed', checked)
+      else
+        input(type='checkbox', name='completed')
+        
+      button(type='submit') SAVE
