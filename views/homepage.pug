@@ -2,29 +2,32 @@ doctype html
 html
   head
     meta(charset='UTF-8')
-    link(rel='stylesheet', href='./stylesheets/styles.css')
+    link(rel='stylesheet', href='./stylesheets/index.css')
     title TODO List
 
   body
-    h1= `Vous avez ${tasks.length} tâches à effectuer :`
+    div.main-container
+      h1= `Vous avez ${tasks.length} tâches :`
 
-    ul
-      each task in tasks
-        if task.detail !== ""
-          li= `${task.title} (${task.detail})`
-            a(href=`/delete/${task.id}`) Remove 
-            a(href=`/edit/${task.id}`) Edit
-        else
-          li= `${task.title}`    
-            a(href=`/delete/${task.id}`) Remove 
-            a(href=`/edit/${task.id}`) Edit
-    
-    h2 Add a new task
-    form(action='/create', method='POST')
-      label(for='title') Task : 
-      input(name='title', placeholder='Title', id='title') 
-      label(for='detail') Detail : 
-      input(name='detail', placeholder='Detail', id='detail')
-      label(for='completed') Completed ?   
-      input(type='checkbox', name='completed', checked=false)
-      button(type='submit') ADD
+      ul
+        each task in tasks
+          if task.detail !== ""
+            li= `${task.title} (${task.detail})`
+              a(href=`/edit/${task.id}`) Edit
+              a(href=`/delete/${task.id}`)
+                span Remove 
+          else
+            li= `${task.title}`  
+              a(href=`/edit/${task.id}`) Edit  
+              a(href=`/delete/${task.id}`)
+                span Remove 
+      
+      h2 Add a new task
+      form(action='/create', method='POST')
+        label(for='title') Task : 
+        input(name='title', placeholder='Title', id='title') 
+        label(for='detail') Detail : 
+        input(name='detail', placeholder='Detail', id='detail')
+        label(for='completed') Completed ?   
+        input(type='checkbox', name='completed', checked=false)
+        button(type='submit') ADD

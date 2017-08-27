@@ -1,0 +1,16 @@
+ul{
+  list-style-type: circle;
+  li{
+    font-size: 1.6em;
+    a{
+      font-size: 0.6em;
+      margin-left: 15px;
+      color: $purple;
+      text-decoration: none;
+      font-weight: 700;
+      span{
+        color: $purpleDark
+      }
+    }
+  }
+}
